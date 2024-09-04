@@ -1,3 +1,23 @@
+//Esta es mi función que suma dos números
+const sum = (a,b) => {
+    return a+b
+}
+
+//Solo un registro en consola para nosotros
+console.log(sum(7,3))
+
+//Exporta la función para usarla en otros archivos 
+// (similar a la palabra clave "export" cuando se usa webpack)
+//----------------------
+
+//Declarar las equivalencias
+//One euro is:
+let oneEuroIs = {
+    "JPY": 156.5, //JAPAN YEN
+    "USD": 1.07, // US DOLLAR
+    "GBP": 0.87, // BRITISH POUND
+}
+
 //Declaramos una función con el nombre exacto "fromEuroToDollar"
 const fromEuroToDollar = function (valueInEuro) {
     //Convertimos el valor a dólares
@@ -6,40 +26,22 @@ const fromEuroToDollar = function (valueInEuro) {
     return valueInDollar;
 }
 
-
-// Tasas de conversión
-let oneEuroIs = {
-    "JPY": 156.5, // japan yen
-    "USD": 1.07,  // us dollar
-    "GBP": 0.87,  // british pound
-};
-
-// Declaramos la función con el nombre exacto "fromDollarToYen"
 const fromDollarToYen = function (valueInDollar) {
-    // Convertir de dólares a euros
-    let euros = dollars / oneEuroIs.USD;  
-    // Convertir de euros a yenes
-    let yen = euros * oneEuroIs.JPY;      
-    return yen;
+    //Convertimos el valor de dólares a euro
+    let dollarToEuro = valueInDollar / 1.07;
+    //Convertimos el valor de euro a Yen
+    let valueInYen = dollarToEuro * 156.5; 
+    //Retornamos el valor en yenes
+    return valueInYen;
 }
 
-// Convertir yenes a libras esterlinas
-const fromYenToPound = function (valueInPound) {
-    // Convertir de yenes a euros
-    let euros = yen / oneEuroIs.JPY; 
-    // Convertir de euros a libras esterlinas 
-    let pounds = euros * oneEuroIs.GBP; 
-    return pounds;
+const fromYenToPound = function (valueInYen) {
+    //Convertimos el valor de yenes a euro
+    let yenToEuro = valueInYen / 156.5;
+    //Convertimos el valor de euro a pound
+    let valueInPound = yenToEuro * 0.87; 
+    //Retornamos el valor en pound
+    return valueInPound;
 }
 
-// Esta es mi función que suma dos números
-const sum = (a , b) => {
-  return a + b
-}
-
-//Solo un registro en consola para nosotros
-console.log(sum(7,3))
-
-//Exporta la función para usarla en otros archivos
-// (similar a la palabra clave "export" cuando se usa webpack)
 module.exports = {sum, fromEuroToDollar, fromDollarToYen, fromYenToPound};
